@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Обращение к гостю -->
-                <div class="guest-name">Дорогая Шахноза,</div>
+                <div class="guest-name">Дорогой(ая) <span id="guest-name">Гость</span>!</div>
 
                 <!-- Текст приглашения -->
                 <p class="invitation-text">
@@ -109,6 +109,13 @@
 
             </div>
         </div>
+        <!-- Скрипт подстановки имени -->
+    <script>
+      const name = new URLSearchParams(window.location.search).get('name');
+      if (name) {
+        document.getElementById('guest-name').textContent = name;
+      }
+    </script>
     </div>
 
 </body>
