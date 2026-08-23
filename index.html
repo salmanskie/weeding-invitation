@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Обращение к гостю -->
-                <div class="guest-name">Дорогой(ая) <span id="guest-name">Гость</span>!</div>
+                <div class="guest-name"><span id="guest-name">Дорогие гости</span>!</div>
 
                 <!-- Текст приглашения -->
                 <p class="invitation-text">
@@ -110,12 +110,19 @@
             </div>
         </div>
         <!-- Скрипт подстановки имени -->
-    <script>
-      const name = new URLSearchParams(window.location.search).get('name');
-      if (name) {
-        document.getElementById('guest-name').textContent = name;
-      }
-    </script>
+       <script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name');
+  const greeting = params.get('greeting'); // Считывает "Дорогой", "Дорогая" или "Дорогие"
+
+  if (name) {
+    let fullText = name;
+    if (greeting) {
+      fullText = greeting + ' ' + name;
+    }
+    document.getElementById('guest-name').textContent = fullText;
+  }
+</script>
     </div>
 
 </body>
